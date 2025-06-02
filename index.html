@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maruti Nandan Dham - Charitable Sansthan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --light-bg: #FFF9F0;
+            --dark-text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--saffron);
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--saffron);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--saffron);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--saffron);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 153, 51, 0.8), rgba(255, 153, 51, 0.8)), 
+                        url('https://images.unsplash.com/photo-1601758003122-53c40e686a19') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--saffron);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--white);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--saffron);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--saffron);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--saffron);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Mission Section */
+        .mission-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .mission-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            transition: transform 0.3s;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .mission-card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--saffron);
+        }
+        
+        /* Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .work-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .work-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .work-item-content {
+            padding: 20px;
+        }
+        
+        .work-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--saffron);
+        }
+        
+        /* Involved Section */
+        .involved-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .involved-option {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .involved-option h3 {
+            font-size: 1.5rem;
+            color: var(--saffron);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .donation-methods {
+            margin-top: 20px;
+        }
+        
+        .donation-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: var(--light-bg);
+            border-radius: 5px;
+        }
+        
+        .donation-method i {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-right: 15px;
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: var(--saffron);
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .submit-btn {
+            background-color: var(--saffron);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            color: var(--saffron);
+            background-color: var(--white);
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background-color: var(--gold);
+            color: var(--white);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                display: block;
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Decorative Elements */
+        .mandala-pattern {
+            position: absolute;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .pattern-1 {
+            top: 50px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--saffron) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .pattern-2 {
+            bottom: 100px;
+            right: 100px;
+            width: 300px;
+            height: 300px;
+            background: conic-gradient(from 0deg, var(--saffron), var(--gold), var(--saffron));
+            border-radius: 50%;
+            opacity: 0.03;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/50x50" alt="Maruti Nandan Dham Logo">
+                <div class="logo-text">
+                    <h1>Maruti Nandan Dham</h1>
+                    <p>Charitable Sansthan</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#work">Our Work</a></li>
+                    <li><a href="#involved">Get Involved</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Serving Humanity with Devotion</h1>
+            <p>Maruti Nandan Dham is dedicated to serving the underprivileged through education, healthcare, and spiritual nourishment. Join us in our mission to create a better tomorrow.</p>
+            <div class="hero-buttons">
+                <a href="#involved" class="btn">Donate Now</a>
+                <a href="#involved" class="btn btn-outline">Volunteer</a>
+            </div>
+        </div>
+        <div class="mandala-pattern pattern-1"></div>
+        <div class="mandala-pattern pattern-2"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Humble Beginnings</h3>
+                    <p>Founded in 1995, Maruti Nandan Dham began as a small temple with a mission to serve the community. What started as a place of worship soon transformed into a center for charitable activities, driven by the principles of seva (service) and bhakti (devotion).</p>
+                    <p>Over the years, we have grown into a trusted organization, touching thousands of lives through our various initiatives in education, healthcare, and community development.</p>
+                    <p>Our work is inspired by the teachings of Lord Hanuman, symbolizing strength, devotion, and selfless service.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca" alt="Maruti Nandan Dham Temple">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="container">
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Our Mission</h3>
+                    <p>To serve humanity with compassion and devotion, providing education, healthcare, and spiritual nourishment to the underprivileged sections of society.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>A society where every individual has access to basic necessities, education, and opportunities for spiritual growth, regardless of their economic status.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Our Values</h3>
+                    <p>Service, Compassion, Integrity, Devotion, and Community. These core values guide all our initiatives and decision-making processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Work</h2>
+            </div>
+            <div class="work-grid">
+                <div class="work-item">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1" alt="Education Program">
+                    <div class="work-item-content">
+                        <h3>Education for All</h3>
+                        <p>We run free schools and tuition centers for underprivileged children, providing quality education, books, and uniforms to over 500 students annually.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef" alt="Health Camp">
+                    <div class="work-item-content">
+                        <h3>Health Camps</h3>
+                        <p>Monthly health camps offering free medical check-ups, medicines, and awareness programs in rural areas, benefiting 200+ people each month.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf" alt="Food Distribution">
+                    <div class="work-item-content">
+                        <h3>Food Distribution</h3>
+                        <p>Daily annadanam (food donation) program serving nutritious meals to 300+ needy people, with special focus on elderly and children.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2" alt="Women Empowerment">
+                    <div class="work-item-content">
+                        <h3>Women Empowerment</h3>
+                        <p>Vocational training programs for women including tailoring, handicrafts, and computer skills, helping them become financially independent.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="https://images.unsplash.com/photo-1516589091380-5d601ae5ca2a" alt="Spiritual Activities">
+                    <div class="work-item-content">
+                        <h3>Spiritual Activities</h3>
+                        <p>Regular satsangs, bhajans, and spiritual discourses to nourish the soul and promote values of peace, harmony, and service.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Disaster Relief">
+                    <div class="work-item-content">
+                        <h3>Disaster Relief</h3>
+                        <p>Providing immediate relief during natural calamities including food, clothing, medicines, and temporary shelter to affected communities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Involved Section -->
+    <section class="involved" id="involved">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Involved</h2>
+            </div>
+            <div class="involved-container">
+                <div class="involved-option">
+                    <h3>Volunteer With Us</h3>
+                    <p>Join our team of dedicated volunteers and contribute your time and skills to make a difference. We welcome volunteers for:</p>
+                    <ul style="list-style-position: inside; margin-top: 15px; margin-bottom: 20px;">
+                        <li>Teaching children</li>
+                        <li>Organizing events</li>
+                        <li>Medical services</li>
+                        <li>Administrative work</li>
+                        <li>Fundraising</li>
+                    </ul>
+                    <p>Fill out our volunteer form and we'll contact you with opportunities that match your interests and availability.</p>
+                    <a href="#contact" class="btn" style="display: inline-block; margin-top: 20px;">Volunteer Form</a>
+                </div>
+                <div class="involved-option">
+                    <h3>Donate</h3>
+                    <p>Your generous donations help us continue and expand our charitable work. Every contribution makes a difference.</p>
+                    <div class="donation-methods">
+                        <div class="donation-method">
+                            <i class="fas fa-rupee-sign"></i>
+                            <div>
+                                <strong>Bank Transfer</strong><br>
+                                Account Name: Maruti Nandan Dham<br>
+                                Account No: XXXXXXXXXX<br>
+                                IFSC: XXXXX01234<br>
+                                Bank: State Bank of India
+                            </div>
+                        </div>
+                        <div class="donation-method">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>
+                                <strong>UPI Payment</strong><br>
+                                UPI ID: donate@marutinandandham<br>
+                                <img src="https://via.placeholder.com/100x100" alt="UPI QR Code" style="margin-top: 10px;">
+                            </div>
+                        </div>
+                        <div class="donation-method">
+                            <i class="fas fa-gift"></i>
+                            <div>
+                                <strong>In-Kind Donations</strong><br>
+                                We accept donations of books, clothes, food grains, and other essentials. Contact us for details.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1" alt="Education Program">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef" alt="Health Camp">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf" alt="Food Distribution">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2" alt="Women Empowerment">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516589091380-5d601ae5ca2a" alt="Spiritual Activities">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" alt="Disaster Relief">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca" alt="Temple Activities">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="Community Service">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Address</strong><br>
+                                Maruti Nandan Dham, Near Hanuman Temple,<br>
+                                Main Road, Vrindavan Colony,<br>
+                                Mathura, Uttar Pradesh 281001
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>Phone</strong><br>
+                                +91 98765 43210<br>
+                                +91 11 2345 6789
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong><br>
+                                info@marutinandandham.org<br>
+                                donations@marutinandandham.org
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Office Hours</strong><br>
+                                Monday to Saturday: 9:00 AM - 5:00 PM<br>
+                                Sunday: 9:00 AM - 1:00 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/60x60" alt="Maruti Nandan Dham Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#work">Our Work</a>
+                <a href="#involved">Get Involved</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Maruti Nandan Dham. All Rights Reserved. Registered Charity No. XXXX/2023</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
