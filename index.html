@@ -597,9 +597,50 @@
             border-radius: 50%;
             opacity: 0.03;
         }
+        /* Scrolling Banner */
+        .scrolling-banner {
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--saffron);
+            color: var(--white);
+            font-weight: 600;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 101; /* higher than header */
+        }
+        
+        .scrolling-text {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: scroll-text 15s linear infinite;
+        }
+        
+        @keyframes scroll-text {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* Push header down */
+        header {
+            top: 50px; /* Adjust to account for banner height */
+        }
+
     </style>
 </head>
 <body>
+    <!-- Scrolling Banner -->
+      <div class="scrolling-banner">
+          <div class="scrolling-text">
+              🌟 Welcome to Maruti Nandan Dham - Join our mission of seva and bhakti 🌟 Donate | Volunteer | Spiritual Activities 🌟 "मारुती नंदन" चा साहित्यिक अर्थ "मारुत/वायूचा पुत्र" असा होतो आणि तो हनुमानालाच सूचित करतो
+          </div>
+      </div>
     <!-- Header -->
     <header>
         <div class="container header-container">
