@@ -639,6 +639,7 @@
         }
 
         /* Blog Section */
+        /* Blog Section */
         .blog-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -691,11 +692,58 @@
           color: var(--gold);
           text-decoration: none;
           transition: color 0.3s;
+          cursor: pointer;
         }
         
         .read-more:hover {
           color: var(--saffron);
         }
+        
+        /* Modal Styles */
+        .blog-modal {
+          display: none;
+          position: fixed;
+          z-index: 2000;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.6);
+          padding-top: 100px;
+        }
+        
+        .modal-content {
+          background-color: #fff;
+          margin: auto;
+          padding: 30px;
+          border: 1px solid #888;
+          width: 90%;
+          max-width: 600px;
+          border-radius: 10px;
+          position: relative;
+        }
+        
+        .modal-close {
+          color: #aaa;
+          position: absolute;
+          top: 15px;
+          right: 20px;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        
+        .modal-close:hover {
+          color: #000;
+        }
+        
+        .modal-date {
+          font-size: 0.9rem;
+          color: #666;
+          margin-bottom: 15px;
+        }
+
 
 
     </style>
@@ -934,6 +982,7 @@
     </section>
 
     <!-- Blog / News Section -->
+    <!-- Blog / News Section -->
     <section class="blog" id="blog">
       <div class="container">
         <div class="section-title">
@@ -946,22 +995,42 @@
               <span class="blog-date">June 8, 2025</span>
               <h3>Medical Camp Success at Village X</h3>
               <p>Over 250 villagers received free check-ups, medicines, and care in our latest outreach program.</p>
-              <a href="#" class="read-more">Read More</a>
+              <a href="javascript:void(0);" class="read-more" 
+                 data-title="Medical Camp Success at Village X" 
+                 data-date="June 8, 2025" 
+                 data-content="Over 250 villagers received free check-ups, medicines, and care in our latest outreach program. The event was organized with the help of 15 volunteers, 3 doctors, and local government support. Community response was overwhelming, and follow-up sessions have been planned.">Read More</a>
             </div>
           </div>
+    
           <div class="blog-card">
             <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe" alt="Update Image">
             <div class="blog-content">
               <span class="blog-date">May 20, 2025</span>
               <h3>Annadanam Drive for Summer Relief</h3>
-              <p>Thanks to your donations, we served over 10,000 meals to those in need during the May heatwave.</p>
-              <a href="#" class="read-more">Read More</a>
+              <p>We served over 10,000 meals during the May heatwave to those in need, thanks to your support.</p>
+              <a href="javascript:void(0);" class="read-more" 
+                 data-title="Annadanam Drive for Summer Relief" 
+                 data-date="May 20, 2025" 
+                 data-content="Thanks to your donations, we served over 10,000 meals to those in need during the May heatwave. The program was coordinated across 4 districts with participation from over 50 volunteers.">Read More</a>
             </div>
           </div>
-          <!-- Add more blog-cards here -->
+          
+          <!-- Add more blog cards as needed -->
         </div>
       </div>
     </section>
+    
+    <!-- Blog Modal Popup -->
+    <div class="blog-modal" id="blogModal">
+      <div class="modal-content">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <h2 id="modalTitle">Blog Title</h2>
+        <p class="modal-date" id="modalDate">Date</p>
+        <p id="modalBody">Full blog content will appear here.</p>
+      </div>
+    </div>
+
+
 
 
     <!-- Contact Section -->
@@ -1091,5 +1160,35 @@
             });
         });
     </script>
+    
+    <!---blog modal popup or "read full story" style--->
+    <script>
+      const readMoreLinks = document.querySelectorAll('.read-more');
+      const modal = document.getElementById('blogModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDate = document.getElementById('modalDate');
+      const modalBody = document.getElementById('modalBody');
+      const modalClose = document.getElementById('modalClose');
+    
+      readMoreLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          modalTitle.innerText = link.getAttribute('data-title');
+          modalDate.innerText = link.getAttribute('data-date');
+          modalBody.innerText = link.getAttribute('data-content');
+          modal.style.display = 'block';
+        });
+      });
+    
+      modalClose.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+    
+      window.addEventListener('click', e => {
+        if (e.target == modal) {
+          modal.style.display = 'none';
+        }
+      });
+    </script>
+
 </body>
 </html>
