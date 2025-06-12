@@ -638,6 +638,66 @@
             top: 50px; /* Adjust to account for banner height */
         }
 
+        /* Blog Section */
+        .blog-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 30px;
+        }
+        
+        .blog-card {
+          background-color: var(--white);
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s;
+        }
+        
+        .blog-card:hover {
+          transform: translateY(-5px);
+        }
+        
+        .blog-card img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+        }
+        
+        .blog-content {
+          padding: 20px;
+        }
+        
+        .blog-date {
+          font-size: 0.9rem;
+          color: #999;
+          display: block;
+          margin-bottom: 10px;
+        }
+        
+        .blog-content h3 {
+          font-size: 1.3rem;
+          color: var(--saffron);
+          margin-bottom: 10px;
+        }
+        
+        .blog-content p {
+          font-size: 0.95rem;
+          color: var(--dark-text);
+          margin-bottom: 15px;
+        }
+        
+        .read-more {
+          font-weight: 600;
+          color: var(--gold);
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+          color: var(--saffron);
+        }
+
+
     </style>
 </head>
 <body>
@@ -872,6 +932,37 @@
             </div>
         </div>
     </section>
+
+    <!-- Blog / News Section -->
+    <section class="blog" id="blog">
+      <div class="container">
+        <div class="section-title">
+          <h2>Latest Updates</h2>
+        </div>
+        <div class="blog-grid">
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095" alt="Update Image">
+            <div class="blog-content">
+              <span class="blog-date">June 8, 2025</span>
+              <h3>Medical Camp Success at Village X</h3>
+              <p>Over 250 villagers received free check-ups, medicines, and care in our latest outreach program.</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe" alt="Update Image">
+            <div class="blog-content">
+              <span class="blog-date">May 20, 2025</span>
+              <h3>Annadanam Drive for Summer Relief</h3>
+              <p>Thanks to your donations, we served over 10,000 meals to those in need during the May heatwave.</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+          <!-- Add more blog-cards here -->
+        </div>
+      </div>
+    </section>
+
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
